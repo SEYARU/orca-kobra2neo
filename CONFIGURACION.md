@@ -1,6 +1,6 @@
 # Configuración OrcaSlicer — Anycubic Kobra 2 Neo
 
-Generado: 2026-08-09 10:50  
+Generado: 2026-08-09 10:53  
 OrcaSlicer: 2.4.2  
 Cuenta: `ba9291fb-5260-4dc6-8ff3-0c3be79554dc`
 
@@ -106,10 +106,12 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `bottom_shell_layers` | 4 |
 | `brim_object_gap` | 0.1 |
 | `brim_type` | no_brim |
+| `draft_shield` | disabled |
 | `elefant_foot_compensation` | 0.15 |
 | `initial_layer_print_height` | 0.2 |
 | `initial_layer_speed` | 20 |
 | `inner_wall_speed` | 80 |
+| `min_skirt_length` | 0 |
 | `outer_wall_speed` | 30 |
 | `print_extruder_id` | 1 |
 | `print_extruder_variant` | Direct Drive Standard |
@@ -119,8 +121,12 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `seam_position` | back |
 | `seam_slope_conditional` | 1 |
 | `seam_slope_min_length` | 10 |
+| `single_loop_draft_shield` | 0 |
+| `skirt_distance` | 2 |
+| `skirt_height` | 1 |
 | `skirt_loops` | 1 |
 | `skirt_speed` | 0 |
+| `skirt_type` | combined |
 | `sparse_infill_density` | 10% |
 | `sparse_infill_pattern` | adaptivecubic |
 | `sparse_infill_speed` | 120 |
@@ -148,6 +154,7 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `brim_type` | outer_only |
 | `brim_width` | 5 |
 | `default_acceleration` | 2000 |
+| `draft_shield` | disabled |
 | `elefant_foot_compensation` | 0.15 |
 | `enable_support` | 0 |
 | `initial_layer_print_height` | 0.2 |
@@ -156,6 +163,7 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `internal_solid_infill_speed` | 50 |
 | `layer_height` | 0.2 |
 | `line_width` | 0.45 |
+| `min_skirt_length` | 0 |
 | `outer_wall_acceleration` | 1000 |
 | `outer_wall_line_width` | 0.45 |
 | `outer_wall_speed` | 30 |
@@ -172,6 +180,12 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `seam_slope_min_length` | 10 |
 | `seam_slope_steps` | 10 |
 | `seam_slope_type` | Contour |
+| `single_loop_draft_shield` | 0 |
+| `skirt_distance` | 2 |
+| `skirt_height` | 1 |
+| `skirt_loops` | 2 |
+| `skirt_speed` | 20 |
+| `skirt_type` | combined |
 | `sparse_infill_density` | 15% |
 | `sparse_infill_pattern` | gyroid |
 | `sparse_infill_speed` | 50 |
@@ -205,12 +219,14 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `brim_type` | outer_only |
 | `brim_width` | 5 |
 | `default_acceleration` | 1000 |
+| `draft_shield` | disabled |
 | `elefant_foot_compensation` | 0.15 |
 | `enable_support` | 0 |
 | `initial_layer_print_height` | 0.2 |
 | `initial_layer_speed` | 15 |
 | `inner_wall_speed` | 25 |
 | `layer_height` | 0.2 |
+| `min_skirt_length` | 0 |
 | `outer_wall_acceleration` | 500 |
 | `outer_wall_speed` | 20 |
 | `raft_first_layer_density` | 60% |
@@ -226,6 +242,12 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `seam_slope_min_length` | 10 |
 | `seam_slope_steps` | 10 |
 | `seam_slope_type` | Contour |
+| `single_loop_draft_shield` | 0 |
+| `skirt_distance` | 3 |
+| `skirt_height` | 1 |
+| `skirt_loops` | 3 |
+| `skirt_speed` | 15 |
+| `skirt_type` | combined |
 | `sparse_infill_density` | 15% |
 | `sparse_infill_pattern` | gyroid |
 | `sparse_infill_speed` | 30 |
