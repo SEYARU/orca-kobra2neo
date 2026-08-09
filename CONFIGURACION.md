@@ -1,6 +1,6 @@
 # Configuración OrcaSlicer — Anycubic Kobra 2 Neo
 
-Generado: 2026-08-09 10:46  
+Generado: 2026-08-09 10:50  
 OrcaSlicer: 2.4.2  
 Cuenta: `ba9291fb-5260-4dc6-8ff3-0c3be79554dc`
 
@@ -105,6 +105,7 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 |---|---|
 | `bottom_shell_layers` | 4 |
 | `brim_object_gap` | 0.1 |
+| `brim_type` | no_brim |
 | `elefant_foot_compensation` | 0.15 |
 | `initial_layer_print_height` | 0.2 |
 | `initial_layer_speed` | 20 |
