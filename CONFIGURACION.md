@@ -1,6 +1,6 @@
 # Configuración OrcaSlicer — Anycubic Kobra 2 Neo
 
-Generado: 2026-08-09 11:21  
+Generado: 2026-08-09 11:27  
 OrcaSlicer: 2.4.2  
 Cuenta: `ba9291fb-5260-4dc6-8ff3-0c3be79554dc`
 
@@ -39,6 +39,31 @@ Hereda de: `Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `textured_plate_temp` | 60 |
 | `textured_plate_temp_initial_layer` | 65 |
 | `type` | filament |
+
+### Elegoo PLA Calibrated @Kobra 2 Neo
+
+Hereda de: `Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle`
+
+| Campo | Valor |
+|---|---|
+| `close_fan_the_first_x_layers` | 3 |
+| `default_filament_colour` | #000000 |
+| `filament_extruder_variant` | Direct Drive Standard |
+| `filament_flow_ratio` | 1 |
+| `filament_max_volumetric_speed` | 15 |
+| `filament_retraction_length` | 0.5 |
+| `filament_retraction_speed` | 40 |
+| `filament_settings_id` | Elegoo PLA Calibrated @Kobra 2 Neo |
+| `filament_vendor` | Elegoo |
+| `filament_z_hop` | 0.2 |
+| `filament_z_hop_types` | Slope Lift |
+| `hot_plate_temp_initial_layer` | 65 |
+| `nozzle_temperature` | 210 |
+| `nozzle_temperature_initial_layer` | 215 |
+| `pressure_advance` | 0 |
+| `slow_down_layer_time` | 8 |
+| `textured_plate_temp` | 60 |
+| `textured_plate_temp_initial_layer` | 65 |
 
 ### Elegoo PLA Wood @Kobra 2 Neo
 
@@ -100,6 +125,35 @@ Hereda de: `Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `textured_plate_temp` | 50 |
 | `textured_plate_temp_initial_layer` | 55 |
 | `type` | filament |
+
+### Elegoo TPU 95A Calibrated @Kobra 2 Neo
+
+Hereda de: `Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle`
+
+| Campo | Valor |
+|---|---|
+| `close_fan_the_first_x_layers` | 2 |
+| `default_filament_colour` | #000000 |
+| `fan_max_speed` | 30 |
+| `filament_extruder_variant` | Direct Drive Standard |
+| `filament_flow_ratio` | 1.1 |
+| `filament_max_volumetric_speed` | 5 |
+| `filament_retraction_length` | 1.5 |
+| `filament_retraction_speed` | 30 |
+| `filament_type` | TPU |
+| `filament_vendor` | Elegoo |
+| `filament_z_hop` | 0.2 |
+| `filament_z_hop_types` | Slope Lift |
+| `hot_plate_temp` | 50 |
+| `hot_plate_temp_initial_layer` | 55 |
+| `nozzle_temperature` | 220 |
+| `nozzle_temperature_initial_layer` | 225 |
+| `overhang_fan_speed` | 30 |
+| `pressure_advance` | 0 |
+| `slow_down_layer_time` | 10 |
+| `slow_down_min_speed` | 10 |
+| `textured_plate_temp` | 50 |
+| `textured_plate_temp_initial_layer` | 55 |
 
 ## Procesos
 
