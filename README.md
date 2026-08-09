@@ -140,6 +140,17 @@ va en lista porque OrcaSlicer los trata como vectores por extrusor.
 **`elefant_foot_compensation` con una sola `f`.** Nombre exacto del campo en el
 JSON. No es un typo.
 
+**`system/` tiene nombres duplicados entre fabricantes.**
+`fdm_process_common` existe en `Anycubic/` y en `Custom/` con valores
+distintos: el de Custom declara `min_skirt_length: 4`, el de Anycubic no lo
+declara. Cualquier script que indexe `system/` por nombre de archivo
+resolverá contra la marca equivocada y reportará un valor que no es el tuyo.
+Indexar siempre por `(fabricante, nombre)` — ver `resolve_inherited.py`.
+
+**Un script read-only no puede romper nada, pero sí puede mentir.** Ese bug
+metió un número inventado en un diagnóstico y estuvo a punto de guiar una
+decisión. Medir antes de optimizar exige también verificar el instrumento.
+
 **Aceleración = 2000, no 2500.** Límite real de la Kobra 2 Neo; 2500 es la
 Kobra 2 a secas.
 
