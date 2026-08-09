@@ -1,0 +1,19 @@
+# --- Salidas de OrcaSlicer que NO se versionan ---
+backups/
+backups_process/
+_papelera_limpieza_*/
+_retirados/
+_procesos_generados/
+*.bak
+*.py.bak
+
+# --- SÍ se versionan: snapshots y documentación generada ---
+!snapshots/
+!CONFIGURACION.md
+
+# --- Ruido de sistema ---
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+venv/

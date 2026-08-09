@@ -1,0 +1,35 @@
+{
+	"deretraction_speed": [
+		"40"
+	],
+	"extruder_clearance_height_to_lid": "10",
+	"extruder_clearance_height_to_rod": "10",
+	"extruder_clearance_radius": "10",
+	"from": "User",
+	"inherits": "Anycubic Kobra 2 Neo 0.4 nozzle",
+	"input_shaping_type": "ZV",
+	"name": "Anycubic Kobra 2 Neo Final",
+	"print_host": "192.168.68.80",
+	"printer_extruder_id": [
+		"1"
+	],
+	"printer_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"printer_settings_id": "Anycubic Kobra 2 Neo Final",
+	"printhost_apikey": "FdBsQMbOxP_sXBhV_zMLYV2Zl77JbgLZleW3VBla7JQ",
+	"retraction_length": [
+		"0.5"
+	],
+	"retraction_speed": [
+		"40"
+	],
+	"support_chamber_temp_control": "0",
+	"version": "2.3.2.60",
+	"z_hop": [
+		"0.2"
+	],
+	"z_hop_types": [
+		"Slope Lift"
+	]
+}

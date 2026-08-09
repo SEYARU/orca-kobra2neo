@@ -1,0 +1,208 @@
+# ============================================================================
+# PROCESSES.YAML
+# ----------------------------------------------------------------------------
+# ESTADO: 3 procesos, mapeo 1:1 con los 3 filamentos de filaments.yaml
+#
+# ----------------------------------------------------------------------------
+# CONTRATO DEL SCRIPT — NO BORRAR NINGUNA DE ESTAS CLAVES
+#
+# build_orca_process() accede con corchete (s["x"]) → falta una = KeyError:
+#
+#   layer_height   first_layer_height
+#   wall_loops     top_shell_layers   bottom_shell_layers
+#   sparse_infill_density             brim_width
+#   outer_wall_speed   inner_wall_speed   infill_speed
+#   top_surface_speed  initial_layer_speed   travel_speed
+#   default_acceleration   outer_wall_acceleration
+#
+# OJO CON DOS TRAMPAS DE NOMENCLATURA:
+#   - Primera capa: la ALTURA es 'first_layer_height' pero la VELOCIDAD es
+#     'initial_layer_speed'. El script mezcla ambos prefijos. No unificar.
+#   - Un solo 'infill_speed' cubre relleno disperso y sólido.
+#
+# Por ítem: name, settings (validate_process)
+# printer.inherit_base es un STRING (en filaments.yaml es un dict).
+# ============================================================================
+
+printer:
+  name: "Anycubic Kobra 2 Neo 0.4 nozzle - Final"
+  compatible_printer: "Anycubic Kobra 2 Neo 0.4 nozzle - Final"
+
+  # Ojo: termina en /process, no en /filament.
+  profile_path: "~/Library/Application Support/OrcaSlicer/user/default/process"
+
+  # Nombre VERIFICADO contra system/Anycubic/process/ — el sufijo
+  # "0.4 nozzle" es obligatorio; sin él, todo cae en "Unsupported".
+  inherit_base: "0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle"
+
+  # Límite real de la Kobra 2 Neo, leído del perfil de máquina:
+  # ['2000','2000']. NO es 2500 — ese es el de la Kobra 2 a secas.
+  machine_max_acceleration: 2000
+
+processes:
+
+  # ==========================================================================
+  # 1. PLA DEFAULT — preset maestro
+  # ==========================================================================
+  - name: "PLA Default @Kobra 2 Neo"
+    settings:
+      # --- Capas ---
+      layer_height: 0.2
+      first_layer_height: 0.25
+
+      # --- Paredes y relleno ---
+      wall_loops: 3
+      top_shell_layers: 5
+      bottom_shell_layers: 4
+      sparse_infill_density: "15%"
+
+      # --- Adherencia ---
+      brim_width: 0
+      # 'elefant' con una sola 'f' es el nombre EXACTO del campo en el JSON
+      # de OrcaSlicer. No es un typo. No lo "corrijas".
+      elefant_foot_compensation: 0.15
+      brim_object_gap: 0.1
+
+      # --- Velocidades ---
+      outer_wall_speed: 45
+      inner_wall_speed: 70
+      infill_speed: 90
+      top_surface_speed: 45
+      initial_layer_speed: 25
+      travel_speed: 180
+
+      # --- Aceleraciones (techo real de la máquina) ---
+      default_acceleration: 2000
+      outer_wall_acceleration: 1000
+
+      # --- Costura ---
+      seam_position: "back"
+      seam_gap: "10%"
+      wipe_on_loops: 1
+      staggered_inner_seams: 1
+
+    # --- Soportes: preconfigurados pero DESACTIVADOS ---
+    # Marcar "Enable support" en la UI usa estos valores directamente.
+    support:
+      enable: false
+      top_z_distance: 0.2
+      xy_distance: 0.35
+      top_interface_layers: 0
+      base_pattern: "rectilinear"
+
+    notes: |
+      Preset maestro. Cubre PLA+ negro y PLA gris (ambos bajo el filamento
+      único "Elegoo PLA"), y piezas con soportes.
+
+      NO agregar variantes aquí. Si necesitas soportes, activa el checkbox
+      en la UI: los parámetros ya están listos.
+
+  # ==========================================================================
+  # 2. PLA WOOD DEFAULT
+  # ==========================================================================
+  - name: "PLA Wood Default @Kobra 2 Neo"
+    settings:
+      # --- Capas ---
+      # 0.2mm es el MÍNIMO para wood. Capas más finas + partículas de fibra
+      # = atasco garantizado.
+      layer_height: 0.2
+      first_layer_height: 0.25
+
+      # --- Paredes y relleno ---
+      wall_loops: 3
+      top_shell_layers: 5
+      bottom_shell_layers: 4
+      sparse_infill_density: "15%"
+
+      # --- Adherencia ---
+      # Brim de 5mm: el wood tiene menos adherencia entre capas y en cama.
+      brim_width: 5
+      elefant_foot_compensation: 0.15
+      brim_object_gap: 0.1
+
+      # --- Velocidades: ~35% por debajo del PLA Default ---
+      outer_wall_speed: 30
+      inner_wall_speed: 45
+      infill_speed: 50
+      top_surface_speed: 30
+      initial_layer_speed: 20
+      travel_speed: 150
+
+      # --- Aceleraciones: iguales, el límite lo pone la máquina ---
+      default_acceleration: 2000
+      outer_wall_acceleration: 1000
+
+      # --- Costura ---
+      seam_position: "back"
+      seam_gap: "10%"
+      wipe_on_loops: 1
+      staggered_inner_seams: 1
+
+    support:
+      enable: false
+      top_z_distance: 0.2
+      xy_distance: 0.35
+      top_interface_layers: 0
+      base_pattern: "rectilinear"
+
+    notes: |
+      ⚠️ La palabra "Wood" en el nombre NO es cosmética.
+
+      El filamento "Elegoo PLA Wood" la usa en su
+      compatible_prints_condition. Si renombras este proceso sin "Wood", el
+      filamento deja de aparecer en el dropdown y vas a perder media hora
+      averiguando por qué.
+
+      El freno real al atasco está en el FILAMENTO
+      (max_volumetric_speed: 8), no aquí. Este perfil solo baja la presión
+      mecánica sobre la boquilla.
+
+  # ==========================================================================
+  # 3. TPU 95A DEFAULT
+  # ==========================================================================
+  - name: "TPU 95A Default @Kobra 2 Neo"
+    settings:
+      # --- Capas ---
+      layer_height: 0.2
+      first_layer_height: 0.25
+
+      # --- Paredes y relleno ---
+      wall_loops: 3
+      top_shell_layers: 4
+      bottom_shell_layers: 3
+      sparse_infill_density: "15%"
+
+      # --- Adherencia ---
+      brim_width: 0
+      elefant_foot_compensation: 0.15
+      brim_object_gap: 0.1
+
+      # --- Velocidades: Bowden + flexible = lento y constante ---
+      outer_wall_speed: 20
+      inner_wall_speed: 25
+      infill_speed: 30
+      top_surface_speed: 20
+      initial_layer_speed: 15
+      travel_speed: 120
+
+      # --- Aceleraciones reducidas ---
+      # El TPU no tolera cambios bruscos: en Bowden, cualquier aceleración
+      # alta genera bajo-extrusión en las esquinas.
+      default_acceleration: 1000
+      outer_wall_acceleration: 500
+
+      # --- Costura ---
+      seam_position: "back"
+      seam_gap: "10%"
+      wipe_on_loops: 1
+
+    support:
+      enable: false
+      top_z_distance: 0.2
+      xy_distance: 0.35
+      top_interface_layers: 0
+      base_pattern: "rectilinear"
+
+    notes: |
+      Separado del PLA por velocidades incompatibles, no por capricho.
+      Un TPU a 45 mm/s en Bowden es una pieza fallida con pasos extra.

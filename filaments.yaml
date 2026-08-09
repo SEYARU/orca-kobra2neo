@@ -1,0 +1,235 @@
+# ============================================================================
+# FILAMENTS.YAML — Anycubic Kobra 2 Neo
+# ----------------------------------------------------------------------------
+# Perfiles de FILAMENTO para OrcaSlicer, declarativos y versionables.
+#
+#   Elegoo PLA              (calibrado)    → usar con "PLA Default"
+#   Elegoo PLA Wood         (preliminar)   → usar con "PLA Wood Default"
+#   Elegoo TPU 95A Black    (calibrado)    → usar con "TPU 95A Default"
+#
+# Los PROCESOS no se gestionan desde aquí. Se editan a mano en OrcaSlicer.
+# generate_processes.py está VETADO: su builder solo conoce 15 de los 60+
+# campos y borra soportes y scarf seam al regenerar. Ver README.
+#
+# ----------------------------------------------------------------------------
+# CONTRATO DE generate_profiles.py — NO BORRAR NINGUNA DE ESTAS CLAVES
+#
+# build_orca_profile() las accede con corchete (s["x"]). Si falta una,
+# lanza KeyError y el filamento no se genera:
+#
+#   nozzle_temp   first_layer_temp   bed_temp   first_layer_bed
+#   flow_ratio    max_volumetric_speed          pressure_advance
+#   retraction    retraction_speed   z_hop
+#   fan_speed     min_layer_time     min_print_speed
+#   disable_fan_first_layers
+#
+# NIVEL DE ÍTEM (no dentro de settings — el builder usa filament.get()):
+#   name, type          obligatorios
+#   vendor, color       opcionales · dentro de settings se descartan callados
+#   calibrated          opcional · solo cambia el mensaje en consola
+#
+# Uso:
+#   python3 generate_profiles.py --dry-run
+#   python3 generate_profiles.py
+#   Cmd+Q COMPLETO en OrcaSlicer y reabrir
+# ============================================================================
+
+printer:
+  name: "Anycubic Kobra 2 Neo 0.4 nozzle - Final"
+  compatible_printer: "Anycubic Kobra 2 Neo 0.4 nozzle - Final"
+
+  # resolve_orca_dir() SUBE por este path buscando el componente "user" y
+  # desde ahí detecta la carpeta de cuenta UUID.
+  # DEBE contener /user/ o la detección falla en silencio.
+  profile_path: "~/Library/Application Support/OrcaSlicer/user/default/filament"
+
+  # ---------------------------------------------------------------------------
+  # CRÍTICO: el base DEBE ser específico de la impresora.
+  #
+  # "Anycubic Generic PLA" y "Anycubic Generic TPU" son genéricos de marca:
+  # OrcaSlicer registra el perfil (le crea su .info) pero lo FILTRA del
+  # dropdown porque el base no declara compatibilidad con ninguna Kobra.
+  #
+  # El de abajo está probado — es el que usan los perfiles que ya imprimían.
+  # En esta instalación es el único base específico que existe.
+  #
+  # El TPU también hereda de un base de PLA. Es correcto: lo que se hereda
+  # es la COMPATIBILIDAD con la impresora, no los parámetros del material.
+  # ---------------------------------------------------------------------------
+  inherit_base:
+    PLA: "Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle"
+    TPU: "Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle"
+
+filaments:
+
+  # ==========================================================================
+  # 1. ELEGOO PLA — cubre PLA+ negro y PLA gris
+  # ==========================================================================
+  # Un solo perfil para ambos carretes. Valores tomados del perfil
+  # "Elegoo PLA Calibrated" que ya imprimía correctamente.
+  # --------------------------------------------------------------------------
+  - name: "Elegoo PLA @Kobra 2 Neo"
+    type: "PLA"
+    vendor: "Elegoo"
+    color: "#3A3A3A"
+    calibrated: true
+    settings:
+      # --- Temperaturas ---
+      # CALIBRADO Y VALIDADO EN IMPRESIÓN. No tocar sin recalibrar.
+      nozzle_temp: 210
+      first_layer_temp: 215
+      bed_temp: 60
+      first_layer_bed: 65
+
+      # --- Flujo ---
+      flow_ratio: 1.0
+      max_volumetric_speed: 15
+      # Pressure advance DESACTIVADO en este setup. Si algún día lo calibras,
+      # súbelo aquí: el script activa enable_pressure_advance solo cuando > 0.
+      pressure_advance: 0
+
+      # --- Retracción ---
+      # 0.5mm pese al Bowden. El grueso de la retracción lo aporta el perfil
+      # de impresora; este valor solo lo ajusta.
+      retraction: 0.5
+      retraction_speed: 40
+      z_hop: 0.2
+
+      # --- Refrigeración ---
+      fan_speed: 100
+      disable_fan_first_layers: 3
+      min_layer_time: 8
+      min_print_speed: 20
+
+    notes: |
+      Cubre Elegoo PLA+ negro y Elegoo PLA gris.
+
+      Secado: 50°C / 6h. El secado post-impresión no aporta calidad en PLA.
+      Ruteo por el estante de las SE: OK.
+
+      EXCEPCIÓN: para piezas en negro con voladizos críticos, baja
+      nozzle_temp a 200 en el slicer solo para ese trabajo. No crees un
+      perfil nuevo por eso.
+
+      Si algún día calibras el gris por separado y su flow diverge más de
+      2% de este, ahí sí se justifica volver a separarlos. Por debajo de
+      2% la diferencia queda dentro del ruido de la tolerancia de
+      diámetro (±0.02mm).
+
+  # ==========================================================================
+  # 2. ELEGOO PLA WOOD — 10-30% fibra de madera
+  # ==========================================================================
+  # Único perfil con valores no medidos. Derivado del PLA calibrado,
+  # cambiando solo lo que el material exige.
+  # --------------------------------------------------------------------------
+  - name: "Elegoo PLA Wood @Kobra 2 Neo"
+    type: "PLA"
+    vendor: "Elegoo"
+    color: "#9C6B4A"
+    calibrated: false
+    settings:
+      # type PLA a propósito, NO PLA-CF: el perfil CF arrastra supuestos de
+      # boquilla endurecida que no aplican a la fibra de madera.
+
+      # --- Temperaturas ---
+      # Rango de fábrica 200-240°C. 215/220 fluye sin tostar la fibra.
+      nozzle_temp: 215
+      first_layer_temp: 220
+      bed_temp: 60
+      first_layer_bed: 65
+
+      # --- Flujo ---
+      # 8 contra 15 del PLA. La fibra no funde, así que el caudal real es
+      # menor que el teórico. ESTE es el freno duro contra el atasco y la
+      # única defensa real en la capa de filamento.
+      flow_ratio: 0.98
+      max_volumetric_speed: 8
+      pressure_advance: 0
+
+      # --- Retracción ---
+      # Se queda en 0.5 igual que el PLA: ya es cortísima, no hay margen
+      # para reducirla más "por ser wood".
+      retraction: 0.5
+      # La velocidad sí baja: el filamento es frágil y 40 mm/s puede
+      # quebrarlo dentro del tubo.
+      retraction_speed: 25
+      z_hop: 0.2
+
+      # --- Refrigeración ---
+      fan_speed: 100
+      disable_fan_first_layers: 3
+      min_layer_time: 8
+      min_print_speed: 10
+
+      # Blindaje: solo seleccionable con un proceso que tenga "Wood" en el
+      # nombre. Requiere el parche de apply_patch.py — sin él, el builder
+      # descarta esta clave en silencio.
+      compatible_prints_condition: "print_preset_name =~ /.*Wood.*/"
+
+    notes: |
+      Elegoo PLA Wood 1KG — 10-30% fibra de madera real.
+
+      POR QUÉ NO SE FUSIONA CON EL PLA:
+      max_volumetric_speed 8 vs 15 no es cosmético. Es la diferencia entre
+      imprimir y atascarse.
+
+      SECADO: 50°C MÁXIMO, 4h. Arriba de eso la fibra se degrada y el color
+      se oscurece de forma irreversible. NO usar el ciclo de 65°C del TPU.
+
+      RUTEO: alimentación DIRECTA, carrete abajo. NO por el estante de las
+      SE. El material es frágil y se quiebra dentro del bowden en el tramo
+      de 45cm; el extrusor queda empujando un fragmento suelto. Ese es el
+      síntoma de "no sale filamento pero la impresora sigue imprimiendo".
+
+      Antes de cargarlo por primera vez, purga el bowden empujando PLA
+      normal a través.
+
+      Si persiste el atasco con ruteo directo: boquilla 0.6mm. Eso obliga
+      a un perfil de máquina aparte.
+
+      PENDIENTE: calibrar flow_ratio y pressure_advance. Son los únicos
+      valores inventados que quedan en este archivo.
+
+  # ==========================================================================
+  # 3. ELEGOO TPU 95A NEGRO
+  # ==========================================================================
+  - name: "Elegoo TPU 95A Black @Kobra 2 Neo"
+    type: "TPU"
+    vendor: "Elegoo"
+    color: "#000000"
+    calibrated: true
+    settings:
+      # --- Temperaturas ---
+      # CALIBRADO Y VALIDADO EN IMPRESIÓN. No tocar sin recalibrar.
+      nozzle_temp: 220
+      first_layer_temp: 225
+      bed_temp: 50
+      first_layer_bed: 55
+
+      # --- Flujo ---
+      flow_ratio: 1.1
+      max_volumetric_speed: 5
+      pressure_advance: 0
+
+      # --- Retracción ---
+      retraction: 1.5
+      retraction_speed: 30
+      z_hop: 0.2
+
+      # --- Refrigeración ---
+      # 30% es deliberado. El TPU con ventilador alto pierde adhesión entre
+      # capas. NO subirlo "para mejorar los voladizos".
+      fan_speed: 30
+      disable_fan_first_layers: 2
+      min_layer_time: 10
+      min_print_speed: 10
+
+    notes: |
+      CALIBRADO Y EN PRODUCCIÓN. Valores recuperados del perfil
+      "Elegoo TPU 95A Calibrated" que ya imprimía correctamente.
+
+      Secado: 65°C / 8h. Alta higroscopicidad — con 70-85% RH ambiente el
+      secado extendido sí aporta calidad real, a diferencia del PLA.
+
+      Post-impresión: 45 min de secadora, vía automatización de Home
+      Assistant sobre binary_sensor.octoprint_printing.
