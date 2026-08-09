@@ -128,8 +128,11 @@ def main():
         print("   escribir sus presets en memoria y los archivos reaparecen.")
         return 1
     if running is None:
-        print("⚠️  No pude verificar si OrcaSlicer está corriendo. Asegúrate de")
-        print("   haberlo cerrado con Cmd+Q antes de continuar.")
+        print("⚠️  No pude verificar si OrcaSlicer está corriendo.")
+        print("   Ciérralo con Cmd+Q y confirma que no queda en el Dock.")
+        if input("   ¿Está cerrado? [y/N] ").strip().lower() != "y":
+            print("Cancelado.")
+            return 1
 
     hits = scan()
     if not hits:

@@ -140,6 +140,14 @@ va en lista porque OrcaSlicer los trata como vectores por extrusor.
 **`elefant_foot_compensation` con una sola `f`.** Nombre exacto del campo en el
 JSON. No es un typo.
 
+**`compatible_prints_condition` NO funciona.** El PLA Wood lo declara
+(`print_preset_name =~ /.*Wood.*/`) y OrcaSlicer 2.4.2 lo ignora: permite
+seleccionar Wood con el proceso `PLA Default` sin avisar. La documentacion
+apenas cubre este campo. **No importa**: medido sobre G-code real, el freno
+efectivo es `max_volumetric_speed: 8` en el FILAMENTO. Con `PLA Default`
+pidiendo 120 mm/s de relleno, el resultado fue 100.3 mm/s (8.0 mm3/s) — el
+slicer recorto un 16%. La proteccion es fisica, no declarativa.
+
 **`system/` tiene nombres duplicados entre fabricantes.**
 `fdm_process_common` existe en `Anycubic/` y en `Custom/` con valores
 distintos: el de Custom declara `min_skirt_length: 4`, el de Anycubic no lo
