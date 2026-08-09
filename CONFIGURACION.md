@@ -1,6 +1,6 @@
 # Configuración OrcaSlicer — Anycubic Kobra 2 Neo
 
-Generado: 2026-08-09 10:53  
+Generado: 2026-08-09 11:21  
 OrcaSlicer: 2.4.2  
 Cuenta: `ba9291fb-5260-4dc6-8ff3-0c3be79554dc`
 
@@ -10,30 +10,35 @@ Cuenta: `ba9291fb-5260-4dc6-8ff3-0c3be79554dc`
 
 ## Filamentos
 
-### Elegoo PLA Calibrated @Kobra 2 Neo
+### Elegoo PLA @Kobra 2 Neo
 
 Hereda de: `Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle`
 
 | Campo | Valor |
 |---|---|
 | `close_fan_the_first_x_layers` | 3 |
-| `default_filament_colour` | #000000 |
-| `filament_extruder_variant` | Direct Drive Standard |
-| `filament_flow_ratio` | 1 |
+| `default_filament_colour` | #3A3A3A |
+| `enable_pressure_advance` | 0 |
+| `fan_max_speed` | 100 |
+| `filament_flow_ratio` | 1.0 |
 | `filament_max_volumetric_speed` | 15 |
 | `filament_retraction_length` | 0.5 |
 | `filament_retraction_speed` | 40 |
-| `filament_settings_id` | Elegoo PLA Calibrated @Kobra 2 Neo |
+| `filament_type` | PLA |
 | `filament_vendor` | Elegoo |
 | `filament_z_hop` | 0.2 |
 | `filament_z_hop_types` | Slope Lift |
+| `hot_plate_temp` | 60 |
 | `hot_plate_temp_initial_layer` | 65 |
 | `nozzle_temperature` | 210 |
 | `nozzle_temperature_initial_layer` | 215 |
+| `overhang_fan_speed` | 100 |
 | `pressure_advance` | 0 |
 | `slow_down_layer_time` | 8 |
+| `slow_down_min_speed` | 20 |
 | `textured_plate_temp` | 60 |
 | `textured_plate_temp_initial_layer` | 65 |
+| `type` | filament |
 
 ### Elegoo PLA Wood @Kobra 2 Neo
 
@@ -66,7 +71,7 @@ Hereda de: `Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `textured_plate_temp_initial_layer` | 65 |
 | `type` | filament |
 
-### Elegoo TPU 95A Calibrated @Kobra 2 Neo
+### Elegoo TPU 95A Black @Kobra 2 Neo
 
 Hereda de: `Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle`
 
@@ -74,8 +79,8 @@ Hereda de: `Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle`
 |---|---|
 | `close_fan_the_first_x_layers` | 2 |
 | `default_filament_colour` | #000000 |
+| `enable_pressure_advance` | 0 |
 | `fan_max_speed` | 30 |
-| `filament_extruder_variant` | Direct Drive Standard |
 | `filament_flow_ratio` | 1.1 |
 | `filament_max_volumetric_speed` | 5 |
 | `filament_retraction_length` | 1.5 |
@@ -94,6 +99,7 @@ Hereda de: `Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `slow_down_min_speed` | 10 |
 | `textured_plate_temp` | 50 |
 | `textured_plate_temp_initial_layer` | 55 |
+| `type` | filament |
 
 ## Procesos
 
@@ -216,47 +222,31 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 |---|---|
 | `bottom_shell_layers` | 4 |
 | `brim_object_gap` | 0.1 |
-| `brim_type` | outer_only |
-| `brim_width` | 5 |
+| `brim_type` | no_brim |
 | `default_acceleration` | 1000 |
-| `draft_shield` | disabled |
 | `elefant_foot_compensation` | 0.15 |
-| `enable_support` | 0 |
 | `initial_layer_print_height` | 0.2 |
 | `initial_layer_speed` | 15 |
 | `inner_wall_speed` | 25 |
-| `layer_height` | 0.2 |
-| `min_skirt_length` | 0 |
 | `outer_wall_acceleration` | 500 |
 | `outer_wall_speed` | 20 |
+| `print_extruder_id` | 1 |
+| `print_extruder_variant` | Direct Drive Standard |
+| `print_settings_id` | TPU 95A Default @Kobra 2 Neo |
 | `raft_first_layer_density` | 60% |
-| `role_based_wipe_speed` | 1 |
-| `scarf_angle_threshold` | 155 |
-| `scarf_joint_flow_ratio` | 1.0 |
-| `scarf_joint_speed` | 100% |
 | `seam_gap` | 10% |
 | `seam_position` | back |
 | `seam_slope_conditional` | 1 |
-| `seam_slope_entire_loop` | 0 |
-| `seam_slope_inner_walls` | 0 |
 | `seam_slope_min_length` | 10 |
-| `seam_slope_steps` | 10 |
-| `seam_slope_type` | Contour |
-| `single_loop_draft_shield` | 0 |
 | `skirt_distance` | 3 |
-| `skirt_height` | 1 |
 | `skirt_loops` | 3 |
 | `skirt_speed` | 15 |
-| `skirt_type` | combined |
-| `sparse_infill_density` | 15% |
 | `sparse_infill_pattern` | gyroid |
 | `sparse_infill_speed` | 30 |
-| `support_base_pattern` | rectilinear |
 | `support_bottom_z_distance` | 0.25 |
 | `support_interface_bottom_layers` | 0 |
 | `support_interface_spacing` | 0.6 |
 | `support_interface_top_layers` | 0 |
-| `support_object_first_layer_gap` | 0.2 |
 | `support_object_xy_distance` | 0.4 |
 | `support_on_build_plate_only` | 0 |
 | `support_threshold_angle` | 45 |
@@ -265,7 +255,6 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `top_shell_layers` | 4 |
 | `top_surface_speed` | 20 |
 | `travel_speed` | 100 |
-| `type` | process |
 | `wall_loops` | 3 |
 | `wipe_before_external_loop` | 1 |
 | `wipe_on_loops` | 1 |

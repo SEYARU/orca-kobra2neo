@@ -37,10 +37,10 @@ MAP = {
     "pressure_advance": "pressure_advance",
 }
 
-ALIAS = {
-    "Elegoo PLA @Kobra 2 Neo": "Elegoo PLA Calibrated @Kobra 2 Neo",
-    "Elegoo TPU 95A Black @Kobra 2 Neo": "Elegoo TPU 95A Calibrated @Kobra 2 Neo",
-}
+# Nombres unificados el 2026-08-09: el disco ahora usa los mismos nombres
+# que filaments.yaml. Los antiguos "Calibrated" estan en _retirados/.
+# Si algun dia vuelve a haber desalineamiento, mapealo aqui.
+ALIAS = {}
 
 
 def index_system():
