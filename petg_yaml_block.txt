@@ -1,0 +1,76 @@
+  # ==========================================================================
+  # 4. ELEGOO PETG TRANSPARENTE
+  # ==========================================================================
+  # NO CALIBRADO. Valores derivados de la etiqueta (230-260 nozzle, 65-75
+  # cama) y de la experiencia con PETG en Bowden. Todo aqui es un punto de
+  # partida, no una medicion.
+  # --------------------------------------------------------------------------
+  - name: "Elegoo PETG Transparente @Kobra 2 Neo"
+    type: "PETG"
+    vendor: "Elegoo"
+    color: "#D8E8E0"
+    calibrated: false
+    settings:
+      # --- Temperaturas ---
+      # 240 es el centro del rango de fabrica. El transparente pide el
+      # extremo alto para quedar realmente claro, pero mas calor = mas
+      # ooze. 240 es el compromiso de arranque.
+      nozzle_temp: 240
+      first_layer_temp: 245
+      # 70, NO 75. Ver README: PETG sobre PEI texturizado a temperatura
+      # alta se suelda a la placa y arranca el recubrimiento al despegar.
+      bed_temp: 70
+      first_layer_bed: 70
+
+      # --- Flujo ---
+      # 0.95: el PETG sobre-extruye con el flow del PLA. Primer valor a
+      # calibrar con una torre de flujo.
+      flow_ratio: 0.95
+      # 10 contra 15 del PLA: funde mas lento. En Bowden, forzarlo produce
+      # sub-extrusion en las esquinas.
+      max_volumetric_speed: 10
+      pressure_advance: 0
+
+      # --- Retraccion ---
+      # 1.0 contra 0.5 del PLA. El PETG hila muchisimo mas; el tramo de
+      # 45cm de Bowden lo empeora.
+      retraction: 1.0
+      # 30, no 40: el PETG es blando y a alta velocidad el engranaje del
+      # extrusor lo muerde y forma un plano en el filamento.
+      retraction_speed: 30
+      z_hop: 0.2
+
+      # --- Refrigeracion ---
+      # 50%, NO 100%. Este es el error clasico del PETG: mucho aire mata
+      # la adhesion entre capas y la pieza se parte por los estratos.
+      fan_speed: 50
+      disable_fan_first_layers: 4
+      min_layer_time: 10
+      min_print_speed: 20
+
+    notes: |
+      Elegoo PETG 1KG transparente. Lote 1-2605-0515.
+      ESTADO: PRELIMINAR. Nada de esto esta medido.
+
+      RIESGO PRINCIPAL - ADHERENCIA EXCESIVA:
+      El PETG se funde quimicamente con el PEI. Sobre placa texturizada el
+      riesgo es menor que sobre lisa, pero real: al despegar puede
+      arrancar trozos del recubrimiento. Mitigaciones aplicadas:
+        - bed_temp 70 en vez de 75
+        - brim_object_gap 0.2 (el doble que el PLA)
+        - elefant_foot_compensation 0.2
+      Mitigacion adicional recomendada: barra de pegamento en stick como
+      agente SEPARADOR (no adhesivo) en la zona de contacto.
+      Despegar SIEMPRE con la cama fria - por debajo de 40 C el PETG
+      contrae y se suelta solo.
+
+      SECADO: 65 C / 8h segun etiqueta. Compatible con las Space Pi SE.
+      Higroscopico como el TPU: con 70-85% RH ambiente, un carrete abierto
+      empieza a chasquear en pocos dias. Guardar con desecante.
+
+      PENDIENTE DE CALIBRAR (en este orden):
+        1. Torre de temperatura 230-255 -> fijar nozzle_temp
+        2. Flow ratio -> el 0.95 es una suposicion
+        3. Torre de retraccion -> el PETG hila, aqui esta el 80% del
+           acabado visual
+        4. max_volumetric_speed real

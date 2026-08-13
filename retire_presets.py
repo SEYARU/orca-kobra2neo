@@ -41,11 +41,13 @@ KEEP = {
         "Elegoo PLA @Kobra 2 Neo",
         "Elegoo PLA Wood @Kobra 2 Neo",
         "Elegoo TPU 95A Black @Kobra 2 Neo",
+        "Elegoo PETG Transparente @Kobra 2 Neo",
     },
     "process": {
         "PLA Default @Kobra 2 Neo",
         "PLA Wood Default @Kobra 2 Neo",
         "TPU 95A Default @Kobra 2 Neo",
+        "PETG Default @Kobra 2 Neo",
     },
 }
 
