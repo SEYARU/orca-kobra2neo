@@ -140,6 +140,14 @@ va en lista porque OrcaSlicer los trata como vectores por extrusor.
 **`elefant_foot_compensation` con una sola `f`.** Nombre exacto del campo en el
 JSON. No es un typo.
 
+**Mover archivos NO borra un preset.** `retire_presets.py` los saca de la
+carpeta, pero OrcaSlicer sigue teniendolos en memoria y los repone al
+cerrar. Hicieron falta tres tandas en `_retirados/` para descubrirlo. Para
+eliminar de verdad: abrir OrcaSlicer, seleccionar el preset, boton de
+quitar preset (el icono junto al disquete), confirmar, y Cmd+Q completo.
+`retire_presets.py` sirve para limpiar restos con el slicer cerrado, no
+para eliminar presets que el slicer conoce.
+
 **`compatible_prints_condition` NO funciona.** El PLA Wood lo declara
 (`print_preset_name =~ /.*Wood.*/`) y OrcaSlicer 2.4.2 lo ignora: permite
 seleccionar Wood con el proceso `PLA Default` sin avisar. La documentacion
