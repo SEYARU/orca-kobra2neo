@@ -255,8 +255,8 @@ filaments:
       # 240 es el centro del rango de fabrica. El transparente pide el
       # extremo alto para quedar realmente claro, pero mas calor = mas
       # ooze. 240 es el compromiso de arranque.
-      nozzle_temp: 240
-      first_layer_temp: 245
+      nozzle_temp: 235
+      first_layer_temp: 240
       # 70, NO 75. Ver README: PETG sobre PEI texturizado a temperatura
       # alta se suelda a la placa y arranca el recubrimiento al despegar.
       bed_temp: 70
