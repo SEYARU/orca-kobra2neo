@@ -1,6 +1,6 @@
 # Configuración OrcaSlicer — Anycubic Kobra 2 Neo
 
-Generado: 2026-08-13 11:52  
+Generado: 2026-08-13 13:12  
 OrcaSlicer: 2.4.2  
 Cuenta: `ba9291fb-5260-4dc6-8ff3-0c3be79554dc`
 
@@ -20,7 +20,7 @@ Hereda de: `Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `default_filament_colour` | #D8E8E0 |
 | `enable_pressure_advance` | 0 |
 | `fan_max_speed` | 50 |
-| `filament_flow_ratio` | 0.95 |
+| `filament_flow_ratio` | 0.9025 |
 | `filament_max_volumetric_speed` | 10 |
 | `filament_retraction_length` | 1.0 |
 | `filament_retraction_speed` | 30 |

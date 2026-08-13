@@ -265,7 +265,7 @@ filaments:
       # --- Flujo ---
       # 0.95: el PETG sobre-extruye con el flow del PLA. Primer valor a
       # calibrar con una torre de flujo.
-      flow_ratio: 0.95
+      flow_ratio: 0.9025
       # 10 contra 15 del PLA: funde mas lento. En Bowden, forzarlo produce
       # sub-extrusion en las esquinas.
       max_volumetric_speed: 10
