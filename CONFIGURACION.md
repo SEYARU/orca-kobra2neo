@@ -1,6 +1,6 @@
 # Configuración OrcaSlicer — Anycubic Kobra 2 Neo
 
-Generado: 2026-08-12 21:53  
+Generado: 2026-08-13 11:52  
 OrcaSlicer: 2.4.2  
 Cuenta: `ba9291fb-5260-4dc6-8ff3-0c3be79554dc`
 
@@ -30,8 +30,8 @@ Hereda de: `Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `filament_z_hop_types` | Slope Lift |
 | `hot_plate_temp` | 70 |
 | `hot_plate_temp_initial_layer` | 70 |
-| `nozzle_temperature` | 240 |
-| `nozzle_temperature_initial_layer` | 245 |
+| `nozzle_temperature` | 235 |
+| `nozzle_temperature_initial_layer` | 240 |
 | `overhang_fan_speed` | 50 |
 | `pressure_advance` | 0 |
 | `slow_down_layer_time` | 10 |
@@ -143,13 +143,11 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `brim_object_gap` | 0.2 |
 | `brim_type` | no_brim |
 | `default_acceleration` | 1500 |
-| `draft_shield` | disabled |
 | `elefant_foot_compensation` | 0.2 |
 | `initial_layer_print_height` | 0.25 |
 | `initial_layer_speed` | 20 |
 | `inner_wall_speed` | 45 |
 | `internal_solid_infill_speed` | 60 |
-| `min_skirt_length` | 0 |
 | `outer_wall_acceleration` | 800 |
 | `outer_wall_speed` | 30 |
 | `print_extruder_id` | 1 |
@@ -160,12 +158,9 @@ Hereda de: `0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle`
 | `seam_position` | back |
 | `seam_slope_conditional` | 1 |
 | `seam_slope_min_length` | 10 |
-| `single_loop_draft_shield` | 0 |
 | `skirt_distance` | 3 |
-| `skirt_height` | 1 |
-| `skirt_loops` | 2 |
+| `skirt_loops` | 3 |
 | `skirt_speed` | 25 |
-| `skirt_type` | combined |
 | `sparse_infill_density` | 10% |
 | `sparse_infill_pattern` | adaptivecubic |
 | `sparse_infill_speed` | 60 |
