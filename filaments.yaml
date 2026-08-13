@@ -249,7 +249,7 @@ filaments:
     type: "PETG"
     vendor: "Elegoo"
     color: "#D8E8E0"
-    calibrated: false
+    calibrated: true
     settings:
       # --- Temperaturas ---
       # 240 es el centro del rango de fabrica. El transparente pide el
